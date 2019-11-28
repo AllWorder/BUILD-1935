@@ -93,7 +93,7 @@ class PlataformManager: public DrawableObject
 
     void workOnCollisionWithPlayer(gameObject* player, int* BRS, int* peresd,HUD* interface)
     {
-      for(int i = 0; i < len; i++)
+      for(int i = 0; i < currentPos; i++)
         if(player->checkObjectCollision(Plates[i]))
         {
           *BRS += Plates[i].brsPlate; // BRS and peresd are non-class variable in main(), like data base
@@ -105,6 +105,15 @@ class PlataformManager: public DrawableObject
           this->deletePlate(&Plates[i]);
         }
 
+    }
+
+    void deletePlatesOutOfScreen()
+    {
+      for(int i = 0; i < currentPos; i++)
+      {
+        if(Plates[i].Q.x < -200)
+          this->deletePlate(&Plates[i]);
+      }
     }
 
     void draw(sf::RenderWindow* window)
@@ -123,6 +132,10 @@ class PlataformManager: public DrawableObject
       }
     }
 
+    ~PlataformManager()
+    {
+      delete[] Plates;
+    }
 };
  
   
