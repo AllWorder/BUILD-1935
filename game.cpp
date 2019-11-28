@@ -205,6 +205,7 @@ main()
         Plates.move(DT, SCREEN_Y, SCREEN_X);
 
         Plates.workOnCollisionWithPlayer(&player ,&BRS ,&PERESD ,&hud);
+        Plates.deletePlatesOutOfScreen();
 
         //EVEN HANDLER
         while (window.pollEvent(event))
@@ -246,4 +247,6 @@ main()
         hud.draw(&window);
         window.display();
     }
+
+    delete[] PlateTextures;
 }
