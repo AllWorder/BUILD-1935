@@ -107,6 +107,7 @@ class gameObject: public DrawableObject
 #include "interface.hpp"
 #include "background.hpp"
 #include "platform.hpp"
+#include "endGame.hpp"
 
 main()
 {
@@ -165,6 +166,18 @@ main()
     PlateTextures[4].loadFromFile("resources/facker.png");
     for(int i = 0; i < 5; i++)
         PlateTextures[i].setSmooth(true);
+//
+
+// endGame context
+    EndGame endGame;
+
+    sf::Texture goodEndTexture;
+    goodEndTexture.loadFromFile("resources/goodEnd.png");
+    sf::Texture badEndTexture;
+    badEndTexture.loadFromFile("resources/badEnd.png");
+
+    endGame.load();
+    endGame.setTextures(&goodEndTexture, &badEndTexture);
 //
 
 
@@ -236,6 +249,8 @@ main()
             plateCounter += 1;
             plateDelay = 50;
         }
+
+        endGame.checkEnd(&window, &BRS, &PERESD, &menu);
 
 
         //GRAPHICS:
