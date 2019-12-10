@@ -221,24 +221,23 @@ main()
         Plates.deletePlatesOutOfScreen();
 
         //EVEN HANDLER
+        
         while (window.pollEvent(event))
 		{
 		    if (event.type == sf::Event::Closed) 
                   window.close();
-			if (event.type == sf::Event::KeyPressed)
-			{
-				if (event.key.code == sf::Keyboard::Escape)
-                    menu.run(&window);
-                if (event.key.code == sf::Keyboard::Up)
-                    player.addSpeed(0, -30);
-                if (event.key.code == sf::Keyboard::Down)
-                    player.addSpeed(0, 30);
-                if (event.key.code == sf::Keyboard::Left)
-                    player.addSpeed(-30, 0);
-                if (event.key.code == sf::Keyboard::Right)
-                    player.addSpeed(30, 0);
-			}
-		}
+        }
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+                menu.run(&window);
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+                 player.addSpeed(0, -15);
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+                player.addSpeed(0, 15);
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+                player.addSpeed(-15, 0);
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+                player.addSpeed(15, 0);
+
         //LOGICS:
 
         if(plateDelay != 0)
